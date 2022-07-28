@@ -6,9 +6,11 @@ const ref = {
 let timerId = null
 
 
+ref.btnStop.setAttribute("disabled",'')
+
 ref.btnStart.addEventListener("click", () => {
     changeBgColorOnBody()
-    ref.btnStart.setAttribute("disabled",'')
+    togglesTheButtonStatus()
     timerId = setInterval(changeBgColorOnBody, 1000)
 })
 
@@ -21,9 +23,31 @@ function changeBgColorOnBody() {
 
 function stopChangeBgColorOnBody() {
     clearInterval(timerId)
-    ref.btnStart.removeAttribute("disabled")
+    togglesTheButtonStatus()
 }
 
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function togglesTheButtonStatus() {
+    const hasBtnStartAtr = ref.btnStart.hasAttribute("disabled")
+    const hasBtnStopAtr = ref.btnStop.hasAttribute("disabled")
+    switch (hasBtnStartAtr) {
+        case true:
+            ref.btnStart.removeAttribute("disabled")
+            break;
+        case false:
+            ref.btnStart.setAttribute("disabled", '')
+            break;
+    }
+
+    switch (hasBtnStopAtr) {
+        case true:
+            ref.btnStop.removeAttribute("disabled")
+            break;
+        case false:
+            ref.btnStop.setAttribute("disabled", '')
+            break;
+    }
 }
