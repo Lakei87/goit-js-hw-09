@@ -37,17 +37,15 @@ function togglesTheButtonStatus() {
         case true:
             ref.btnStart.removeAttribute("disabled")
             break;
-        case false:
+        default:
             ref.btnStart.setAttribute("disabled", '')
-            break;
     }
 
     switch (hasBtnStopAtr) {
         case true:
             ref.btnStop.removeAttribute("disabled")
             break;
-        case false:
+        default:
             ref.btnStop.setAttribute("disabled", '')
-            break;
     }
 }
